@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+   
+        <title>Happy Birthday</title>
+        <link rel="stylesheet" href="syt.css">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    </head>
+    <section>
+        
+    </section>
+    <body>
+      
+        <div id="merrywrap" class="merrywrap">
+            <div class="giftbox">
+              <div class="cover">
+                <div></div>
+              </div>
+      
+              <div class="box"></div>
+            </div>
+      
+            
+          </div>
+      
+          <div class="card">
+              <div class="back"></div>
+              <div class="front">
+                <div class="imgset">
+                     <img width="100%" src="https://1.bp.blogspot.com/-Mgj9-rbs65E/XfMoPSD5gtI/AAAAAAAAURk/NBokE2gSS2cTSJ2em5lZ5hJDuTtRN7UVwCLcBGAsYHQ/s1600/2713997.png">
+                   </div>
+              </div>
+              <div class="text-container">
+                <p id="head">Happy Birthday!</p>
+                <h5>@From babar ali </h5>
+                <p>Happy Birthday Prachi I hope your special day will bring you lots of happiness, love, and fun. Hope you will enjoy you full life as you wish be happy always and never forgot i am with you always even if you are wrong</p>
+                <p>Thank you so much Prachi</p>
+              </div>
+            </div>
+            <div id="loading">
+              <div class="load">
+                <div class="data"></div>
+                <div class="value">waiting...</div>
+              </div>
+            </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+          <script>
+              document.getElementById("merrywrap").style.display = "none";
+      
+      gsap.timeline()
+      .to("#loading .load .data",{x:"100%",duration:2,ease:"power1.inOut"})
+      .to("#loading .load",{scale:1.2,duration:0.2,ease:"power1.inOut",rotate:15})
+      .to("#loading .load",{delay:0.5,scale:1.4,duration:0.2,ease:"power1.inOut",rotate:-15})
+      .to("#loading .load",{delay:0.5,scale:1.6,duration:0.2,ease:"power1.inOut",rotate:25})
+      .to("#loading .load",{scale:1.8,delay:0.5,duration:0.2,ease:"power1.inOut",rotate:-25})
+      .to("#loading .load",{scale:2,duration:0.2,delay:0.5,ease:"power1.inOut",rotate:30})
+      .to("#loading .load",{scale:10,duration:1,ease:"power1.inOut",rotate:-30})
+      .to("#loading .load",{opacity:0,duration:0.5,onComplete:()=>{
+          
+          document.body.style.position = "unset";
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("merrywrap").style.display = "block";
+          
+          gsap.timeline()
+          .to("#body",{backgroundColor:"#d44"})
+          .from("#merrywrap",{opacity:0,scale:0,duration:1,ease:"power1.inOut"})
+         
+          
+      }})
+      
+      
+        
+        window.onload = function () {
+          var merrywrap = document.getElementById("merrywrap");
+          var box = merrywrap.getElementsByClassName("giftbox")[0];
+          var step = 1;
+          var stepMinutes = [2000, 2000, 1000, 1000];
+          function init() {
+            box.addEventListener("click", openBox, false);
+          }
+          function stepClass(step) {
+            merrywrap.className = 'merrywrap';
+            merrywrap.className = 'merrywrap step-' + step;
+          }
+          function openBox() {
+            if (step === 1) {
+              box.removeEventListener("click", openBox, false);
+            }
+            stepClass(step);
+            if (step === 3) {
+            }
+            if (step === 4) {
+              document.getElementById("merrywrap").style.display = "none";
+              document.getElementsByClassName("card")[0].style.display = "block";
+              gsap.timeline()
+              .from(".card",{opacity:0,scale:0,duration:0.2})
+              return;
+            }
+            setTimeout(openBox, stepMinutes[step - 1]);
+            step++;
+          }
+        
+          init();
+        
+        };
+          </script>
+          
+    </body>
+</html>
